@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8.0.30
+    restart: always
+    tty: true
+    ports:
+      - "33066:3306"
+    volumes:
+      - ./src/main/resources/mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: keycloak
+  keycloak:
+    image: quay.io/keycloak/keycloak:18.0.0
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      DB_ADDR: mysql
+      DB_VENDOR: MYSQL
+      DB_DATABASE: keycloak
+      DB_PORT: 3306
+      DB_USER: keycloak
+      DB_PASSWORD: keycloak
+    ports:
+      - "8282:8080"
+    depends_on:
+      - mysql
+    command:
+      - start-dev

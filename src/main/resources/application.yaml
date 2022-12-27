@@ -1,0 +1,63 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/horseAPI
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          horse-api-client:
+#            client-id: horse-api-client
+#            client-secret: QvIrr709UszGF0L6M9ts7Mp2qC3xIFNi
+#            scope: openid, profile, roles
+#            authorization-grant-type: authorization_code
+#            redirect-uri: http://localhost:8080/login/oauth2/code/horse-api-client
+#        provider:
+#          horse-api-client:
+#            issuer-uri: http://localhost:8181/realms/horse-api
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
+        web: DEBUG
+
+
+keycloak:
+  realm: horse-api
+  auth-server-url: http://localhost:8181
+  ssl-required: external
+#  public-client: true
+  resource: horse-api-client
+  use-resource-role-mappings: true
+  credentials:
+    secret: QvIrr709UszGF0L6M9ts7Mp2qC3xIFNi
+#  bearer-only: true
+  principal-attribute: preferred_username
+
+#https://docs.aws.amazon.com/timestream/latest/developerguide/data-modeling.html#data-modeling-dimensionsmeasures
+#https://github.com/awslabs/amazon-timestream-tools/blob/adffb5cf0aae5809bc4a2420f5d8a37d6e662533/sample_apps_reinvent2021/javaV2/src/main/java/com/amazonaws/services/timestream/QueryExample.java
+#https://www.callicoder.com/spring-boot-security-oauth2-social-login-part-1/
+#https://www.youtube.com/playlist?list=PLS1QulWo1RIZ-IvP8n2ArWXj4s6ch50T-
+#https://stackoverflow.com/questions/39356300/avoid-keycloak-default-login-page-and-use-project-login-page
+#https://www.youtube.com/watch?v=t9O99l4gjAc
+#https://keycloak.discourse.group/t/custom-login-page-with-social-login-not-the-one-from-keycloak/12166
+#https://wjw465150.gitbooks.io/keycloak-documentation/content/server_development/topics/identity-brokering/account-linking.html
+#https://developers.redhat.com/blog/2020/11/24/authentication-and-authorization-using-the-keycloak-rest-api
+#https://www.techgeeknext.com/install-keycloak-mysql
+#https://www.youtube.com/watch?v=_5a_r7iBC6Q
+#https://github.com/opensingular/singular-keycloak-database-federation
+#https://www.comakeit.com/blog/quick-guide-using-keycloak-identity-access-management/
+#https://keycloak.discourse.group/t/custom-login-page-with-social-login-not-the-one-from-keycloak/12166/18
+#https://lists.jboss.org/pipermail/keycloak-user/2016-July/007045.html
+#https://github.com/keycloak/keycloak/blob/main/testsuite/integration-arquillian/tests/base/src/test/java/org/keycloak/testsuite/broker/KcOidcBrokerPromptNoneRedirectTest.java#L58
+#https://www.springcloud.io/post/2022-02/spring-security-keycloak-interface
+
+#http://localhost:8181/realms/horse-api/protocol/openid-connect/auth?client_id=horse-api-client&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F*&response_type=code&scope=openid&kc_idp_hint=google
+#http://localhost:8181/realms/horse-api/protocol/openid-connect/auth?client_id=horse-api-client&redirect_uri=http://localhost:8080/*&response_type=code&scope=openid&kc_idp_hint=facebook
+#http://localhost:8181/realms/horse-api/protocol/openid-connect/auth?client_id=horse-api-client&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Flogin%2Foauth2%2Fcode%2Fhorse-api-client&response_type=code&scope=openid&kc_idp_hint=google
+#http://localhost:8181/realms/horse-api/protocol/openid-connect/auth?client_id=horse-api-client&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fsso%2Flogin&response_type=code&scope=openid&kc_idp_hint=google
+#http://localhost:8181/realms/horse-api/protocol/openid-connect/auth?response_type=code&client_id=horse-api-client&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fsso%2Flogin&state=69d510db-8d66-4ad3-a401-9585c058091f&kc_idp_hint=google&scope=openid

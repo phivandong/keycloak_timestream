@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<h1>Welcome to Keycloak Demo App</h1>
+<p>Login</p>
+<form th:action="@{/login}" method="POST">
+    <label for="username">Username</label>:
+    <input type="text" id="username" name="username" autofocus="autofocus" />
+    <br>
+    <label for="password">Password</label>:
+    <input type="password" id="password" name="password" />
+    <input type="submit" value="Log in" />
+</form>
+
+<a th:href="@{/api/user/google-login}">Google Login</a>
+<br>
+<a th:href="@{/api/user/facebook-login}">Facebook Login</a>
+<!--<a th:href="@{/secure}">Login</a>-->
+</body>
+</html>
